@@ -16,6 +16,6 @@ AI Flashcards is an innovative application designed to enhance the learning expe
 - **Stripe**: Payment processing integration for premium features.
 
 ## Group Members
-- **[Christopher Sidarous]**: 
-- **[Isaac Shaker]**: 
-- **[Nicholas Lorenzi]**: 
+- **[Christopher Sidarous]**:  Worked on Stripe and clerk to create premium features. 
+- **[Isaac Shaker]**: Worked on frontend deisgn.
+- **[Nicholas Lorenzi]**: Worked on firebase storage to save flashcards.
