@@ -40,7 +40,7 @@ export default function Generate() {
     setLoading(true); // Set loading to true when starting to fetch
 
     try {
-      const response = await fetch('/api/Generate', {
+      const response = await fetch('/api/generate', {
         method: 'POST',
         body: text,
       });
