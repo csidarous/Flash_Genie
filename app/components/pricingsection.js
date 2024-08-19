@@ -1,19 +1,19 @@
 import { Container, Button, Box, CardContent, Card, Typography, Grid } from '@mui/material';
-//import getStripe from '@/utils/get-stripe'; // Make sure this file exists and exports a function to get Stripe instance
+import getStripe from '/utils/get-stripe'; // Make sure this file exists and exports a function to get Stripe instance
 
 const Pricing = () => {
-
     const handleCheckout = async () => {
-        const checkoutSession = await fetch('/api/checkout_sessions', {
+        const checkoutSession = await fetch('/api/checkout_session', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { origin: 'http://localhost:3000' },
         });
         const checkoutSessionJson = await checkoutSession.json();
-    
-        //const stripe = await getStripe();
-        // const { error } = await stripe.redirectToCheckout({
-        //   sessionId: checkoutSessionJson.id,
-        // });
+        console.log('Session ID:', checkoutSessionJson.id); // Add this line
+
+        const stripe = await getStripe();
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: checkoutSessionJson.id,
+        });
     
         if (error) {
           console.warn(error.message);
@@ -73,7 +73,7 @@ const Pricing = () => {
                           Pro Plan
                         </Typography>
                         <Typography variant="h6" color="textSecondary" gutterBottom>
-                          $5/month
+                          $1.99/month
                         </Typography>
                         <Typography variant="body1" sx={{ mb: 2 }}>
                           Upgrade to the Pro plan for advanced features, including smart flashcards, unlimited usage, and priority support.

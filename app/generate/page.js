@@ -2,11 +2,14 @@
 
 import React, { useState } from 'react';
 import { AppBar, Button, Typography, Toolbar, Container, Box, TextField, Grid, Card, CardContent} from '@mui/material';
+import {useUser, SignedIn, SignedOut, UserButton} from '@clerk/nextjs';
 import Link from 'next/link';
 
 export default function generate() {
   const [text, setText] = useState('');
-  const [flashcards, setFlashcards] = useState([]);
+  const { isLoaded, isSignedIn, user } = useUser()
+  const [flashcards, setFlashcards] = useState([])
+  const [flipped, setFlipped] = useState({})
 
   const handleSubmit = async () => {
     if (!text.trim()) {
@@ -32,37 +35,22 @@ export default function generate() {
     }
   }
 
-  const handleStripe = async () => {
-    const checkoutSession = await fetch('/api/checkout_sessions', {
-      method: 'POST',
-      headers: { origin: 'http://localhost:3000' },
-    })
-    const checkoutSessionJson = await checkoutSession.json()
-  
-    const stripe = await getStripe()
-    const {error} = await stripe.redirectToCheckout({
-      sessionId: checkoutSessionJson.id,
-    })
-  
-    if (error) {
-      console.warn(error.message)
-    }
-  }
 
   return (
     <>
       <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Flashcard SaaS
-          </Typography>
-          <Button color="inherit">
-            <Link href="/sign-in">Login</Link>
-          </Button>
-          <Button color="inherit">
-            <Link href="/sign-up">Sign Up</Link>
-          </Button>
-        </Toolbar>
+      <Toolbar>
+        <Typography variant="h6" style={{flexGrow: 1}}>
+          Flashcard SaaS
+        </Typography>
+        <SignedOut>
+          <Button color="inherit" href="/sign-in">Login</Button>
+          <Button color="inherit" href="/sign-up">Sign Up</Button>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </Toolbar>
       </AppBar>
 
       <Container maxWidth="md">
