@@ -6,7 +6,7 @@ import { useUser, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import FlipIcon from '@mui/icons-material/Flip';
 import getStripe from '/utils/get-stripe';
 
-export default function Generate() {
+export default function generate() {
   const [text, setText] = useState('');
   const { isLoaded, isSignedIn, user } = useUser();
   const [flashcards, setFlashcards] = useState([]);
