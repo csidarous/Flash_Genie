@@ -2,7 +2,7 @@
     "framework": "nextjs",
     "functions": {
       "app/api/generate/route.js": {
-        "maxDuration": 10
+        "maxDuration": 30
       }
     }
   }
