@@ -1,7 +1,7 @@
 {
     "framework": "nextjs",
     "functions": {
-      "api/generate": {
+      "app/api/generate/route.js": {
         "maxDuration": 10
       }
     }
