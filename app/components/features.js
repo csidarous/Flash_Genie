@@ -17,6 +17,7 @@ const features = [
 
 const Features = () => {
   return (
+    <section id="features">
     <Container 
       maxWidth="md" 
       sx={{
@@ -113,6 +114,7 @@ const Features = () => {
         ))}
       </Grid>
     </Container>
+    </section>
   );
 };
 

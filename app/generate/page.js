@@ -77,7 +77,9 @@ export default function Generate() {
           <SignedIn>
             <UserButton />
           </SignedIn>
-          <Button color="inherit" sx={{ ml: 2 }} onClick={handleCheckout}>Subscribe</Button>
+          {/* <Button variant="contained" sx={{ backgroundColor: '#ffd700', color: '#333333' }} href="/waitlistForm">
+          Join Waitlist
+          </Button> */}
         </Toolbar>
       </AppBar>
 

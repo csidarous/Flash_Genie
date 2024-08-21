@@ -2,6 +2,7 @@ import { Container, Button, Typography, Box } from '@mui/material';
 
 const Hero = () => {
   return (
+    <section id="hero">
     <Container 
       maxWidth="md"
       sx={{
@@ -61,7 +62,7 @@ const Hero = () => {
       <Button 
         variant="contained" 
         color="secondary" 
-        href="/generate"
+        href="/sign-up"
         sx={{ 
           mt: 4, 
           padding: '10px 20px', 
@@ -75,6 +76,7 @@ const Hero = () => {
         Get Started with Free Version
       </Button>
     </Container>
+    </section>
   );
 }
 

@@ -69,8 +69,8 @@ export default function SignInPage() {
       </Toolbar>
     </AppBar>
       <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ minHeight: '100vh' }}>
-        <Typography variant="h4">Sign In</Typography>
-        <SignIn />
+        <Typography variant="h4" >Sign In</Typography>
+        <SignIn afterSignInUrl="/generate"/>
       </Box>
     </Container>
   );

@@ -1,5 +1,5 @@
 'use client';
-import { SignedIn, SignIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignUp, SignedOut, UserButton } from "@clerk/nextjs";
 import { Container, Toolbar, Button, AppBar, Box, Typography, IconButton, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
@@ -70,7 +70,7 @@ export default function SignInPage() {
     </AppBar>
       <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ minHeight: '100vh' }}>
         <Typography variant="h4">Sign Up</Typography>
-        <SignIn />
+        <SignUp afterSignInUrl="/generate"/>
       </Box>
     </Container>
   );
