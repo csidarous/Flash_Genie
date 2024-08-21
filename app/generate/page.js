@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { AppBar, Button, Typography, Toolbar, Container, Box, TextField, Grid, Card, CardContent, IconButton, CircularProgress } from '@mui/material';
+import { AppBar, Button, Typography, Toolbar, Container, Box, TextField, Grid, Card, CardContent, IconButton, CircularProgress, Menu, MenuItem, } from '@mui/material';
 import { useUser, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import FlipIcon from '@mui/icons-material/Flip';
 import getStripe from '/utils/get-stripe';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Generate() {
   const [text, setText] = useState('');
@@ -63,25 +64,84 @@ export default function Generate() {
     setFlipped((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: '#333' }}>
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: '#fff' }}>
-            Flashcard SaaS
-          </Typography>
+      <AppBar 
+      position="static" 
+      sx={{ backgroundColor: '#333', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)' }} 
+      >
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        
+        <Typography 
+          variant="h4" 
+          sx={{ fontWeight: 'bold', color: '#fff', letterSpacing: '0.05em' }}
+        >
+          FlashGenie
+        </Typography>
+        
+        
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: '1rem' }}>
           <SignedOut>
-            <Button color="inherit" href="/sign-in">Login</Button>
-            <Button color="inherit" href="/sign-up">Sign Up</Button>
+            <Button color="inherit" href="/sign-in" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+              Login
+            </Button>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              href="/sign-up" 
+              sx={{ fontWeight: 'bold', fontSize: '1.1rem', borderRadius: '20px' }}
+            >
+              Sign Up
+            </Button>
           </SignedOut>
           <SignedIn>
             <UserButton />
           </SignedIn>
-          {/* <Button variant="contained" sx={{ backgroundColor: '#ffd700', color: '#333333' }} href="/waitlistForm">
-          Join Waitlist
-          </Button> */}
-        </Toolbar>
-      </AppBar>
+        </Box>
+
+        <IconButton 
+          edge="start" 
+          color="inherit" 
+          aria-label="menu" 
+          onClick={handleMenuOpen}
+          sx={{ display: { xs: 'block', sm: 'none' } }}
+        >
+          <MenuIcon />
+        </IconButton>
+
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleMenuClose}
+          sx={{ display: { xs: 'block', sm: 'none' } }}
+        >
+          <SignedOut>
+            <MenuItem onClick={handleMenuClose} component="a" href="/sign-in">
+              Login
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose} component="a" href="/sign-up">
+              Sign Up
+            </MenuItem>
+          </SignedOut>
+          <SignedIn>
+            <MenuItem onClick={handleMenuClose}>
+              <UserButton />
+            </MenuItem>
+          </SignedIn>
+        </Menu>
+      </Toolbar>
+    </AppBar>
 
       <Container maxWidth="md">
         <Box sx={{ my: 6, textAlign: 'center' }}>

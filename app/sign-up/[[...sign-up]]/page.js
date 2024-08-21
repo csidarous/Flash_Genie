@@ -16,11 +16,38 @@ export default function SignInPage() {
   };
   return (
     <Container>
-      <AppBar position="static" sx={{ backgroundColor: '#333' }}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: '#fff' }}>
-          Flashcard SaaS
+      <AppBar 
+      position="static" 
+      sx={{ backgroundColor: '#333', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)' }} 
+      >
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        
+        <Typography 
+          variant="h4" 
+          sx={{ fontWeight: 'bold', color: '#fff', letterSpacing: '0.05em' }}
+        >
+          FlashGenie
         </Typography>
+        
+        
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: '1rem' }}>
+          <SignedOut>
+            <Button color="inherit" href="/sign-in" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+              Login
+            </Button>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              href="/sign-up" 
+              sx={{ fontWeight: 'bold', fontSize: '1.1rem', borderRadius: '20px' }}
+            >
+              Sign Up
+            </Button>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </Box>
 
         <IconButton 
           edge="start" 
@@ -52,20 +79,6 @@ export default function SignInPage() {
             </MenuItem>
           </SignedIn>
         </Menu>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <SignedOut sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Button color="inherit" href="/sign-in" sx={{ fontWeight: 'bold' }}>
-              Login
-            </Button>
-            <Button color="inherit" href="/sign-up" sx={{ fontWeight: 'bold' }}>
-              Sign Up
-            </Button>
-          </SignedOut>
-          <SignedIn sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <UserButton />
-          </SignedIn>
-        </div>
       </Toolbar>
     </AppBar>
       <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ minHeight: '100vh' }}>

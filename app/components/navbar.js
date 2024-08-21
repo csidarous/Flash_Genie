@@ -1,5 +1,5 @@
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { AppBar, Button, Typography, Toolbar, IconButton, Menu, MenuItem } from '@mui/material';
+import { AppBar, Button, Typography, Toolbar, IconButton, Menu, MenuItem, Box } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 
@@ -16,12 +16,47 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#333' }}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: '#fff' }}>
-          Flashcard SaaS
+    <AppBar 
+      position="static" 
+      sx={{ backgroundColor: '#333', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)' }} 
+    >
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        
+        <Typography 
+          variant="h4" 
+          sx={{ fontWeight: 'bold', color: '#fff', letterSpacing: '0.05em' }}
+        >
+          FlashGenie
         </Typography>
         
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: '2rem' }}>
+          <Button color="inherit" href="#features" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+            Features
+          </Button>
+          <Button color="inherit" href="#pricing" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+            Pricing
+          </Button>
+        </Box>
+        
+        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', gap: '1rem' }}>
+          <SignedOut>
+            <Button color="inherit" href="/sign-in" sx={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+              Login
+            </Button>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              href="/sign-up" 
+              sx={{ fontWeight: 'bold', fontSize: '1.1rem', borderRadius: '20px' }}
+            >
+              Sign Up
+            </Button>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </Box>
+
         <IconButton 
           edge="start" 
           color="inherit" 
@@ -38,7 +73,6 @@ const NavBar = () => {
           onClose={handleMenuClose}
           sx={{ display: { xs: 'block', sm: 'none' } }}
         >
-          
           <MenuItem onClick={handleMenuClose} component="a" href="#features">
             Features
           </MenuItem>
@@ -59,26 +93,6 @@ const NavBar = () => {
             </MenuItem>
           </SignedIn>
         </Menu>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <Button color="inherit" href="#features" sx={{ fontWeight: 'bold' }}>
-            Features
-          </Button>
-          <Button color="inherit" href="#pricing" sx={{ fontWeight: 'bold' }}>
-            Pricing
-          </Button>
-          <SignedOut>
-            <Button color="inherit" href="/sign-in" sx={{ fontWeight: 'bold' }}>
-              Login
-            </Button>
-            <Button color="inherit" href="/sign-up" sx={{ fontWeight: 'bold' }}>
-              Sign Up
-            </Button>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </div>
       </Toolbar>
     </AppBar>
   );

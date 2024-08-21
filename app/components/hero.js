@@ -45,7 +45,7 @@ const Hero = () => {
           mb: 4,
         }}
       >
-        Welcome to Flashcard SaaS
+        Welcome to FlashGenie
       </Typography>
       <Typography 
         variant="h5" 
