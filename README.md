@@ -1,4 +1,4 @@
-# AI Flashcards
+# Flash Genie
 
 ## Table of Contents
 1. [Live Demo](#live-demo)
