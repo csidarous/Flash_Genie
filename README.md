@@ -50,8 +50,3 @@ You can view a live demo of the Inventory Manager website [here](https://ai-flas
 - **Progress Tracking:** Provide users with detailed insights into their study progress, including flashcard completion rates, topics mastered, and areas needing improvement.
 - **A/B Testing for UI:** Conduct A/B testing on different UI layouts and features to determine the most effective designs for improving user retention and satisfaction.
 
-
-## Contributors
-- **[Christopher Sidarous]**: Worked on Stripe and clerk to create premium features. 
-- **[Isaac Shaker]**: Worked on frontend deisgn.
-- **[Nicholas Lorenzi]**: Worked on firebase storage to save flashcards.
